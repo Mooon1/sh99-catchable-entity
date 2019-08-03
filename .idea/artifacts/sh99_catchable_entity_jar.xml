@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="sh99-catchable-entity:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/sh99_catchable_entity_jar</output-path>
+    <root id="archive" name="sh99-catchable-entity.jar">
+      <element id="module-output" name="sh99-catchable-entity" />
+    </root>
+  </artifact>
+</component>

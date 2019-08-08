@@ -1,5 +1,5 @@
 name: "Catchable-Entity"
-version: "1.0.0"
+version: "1.0.1"
 authors:
   - "Mooon1"
 main: sh99.catchable_entity.Main

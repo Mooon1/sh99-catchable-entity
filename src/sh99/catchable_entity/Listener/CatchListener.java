@@ -26,9 +26,13 @@ public class CatchListener implements Listener
     @EventHandler(priority = EventPriority.NORMAL)
     public void onCatchThrowableHit(ProjectileHitEvent event)
     {
-        if(!(event.getEntity() instanceof Egg) && !(event.getEntity() instanceof Snowball)){
+        if(!(event.getEntity() instanceof Snowball)){
             return;
         }
+
+        Snowball snowball = (Snowball) event.getEntity();
+
+        event.getEntity().getServer().broadcastMessage(snowball.getName());
 
         Entity hitEntity = event.getHitEntity();
 

@@ -7,6 +7,8 @@ public class Main extends JavaPlugin
 {
     @Override
     public void onEnable() {
+        this.saveConfig();
+
         this.getServer().getPluginManager().registerEvents(new CatchListener(), this);
     }
 

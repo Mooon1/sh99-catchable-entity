@@ -13,7 +13,7 @@ public class MineBall implements Catchable
 {
     @Override
     public int rate() {
-        return 1;
+        return 10;
     }
 
     @Override
@@ -37,28 +37,23 @@ public class MineBall implements Catchable
     }
 
     @Override
-    public int craftAmount() {
-        return 3;
-    }
-
-    @Override
     public String namespace() {
         return "ball_mine";
     }
 
     @Override
     public ShapedRecipe recipe(String s, ItemStack itemStack, Plugin plugin) {
-        NamespacedKey namespacedKey = new NamespacedKey(plugin, s);
-        ShapedRecipe recipe = new ShapedRecipe(namespacedKey, itemStack);
+        NamespacedKey namespacedKey = new NamespacedKey(plugin, namespace());
+        ShapedRecipe recipe = new ShapedRecipe(namespacedKey, create());
         recipe.shape("IRI", "WBW", "ISI");
         recipe.setIngredient('I', Material.IRON_INGOT);
         recipe.setIngredient('R', Material.REDSTONE);
         recipe.setIngredient('I', Material.IRON_INGOT);
-        recipe.setIngredient('W', Material.WHEAT);
+        recipe.setIngredient('W', Material.WHEAT_SEEDS);
         recipe.setIngredient('B', Material.STONE_BUTTON);
-        recipe.setIngredient('W', Material.WHEAT);
+        recipe.setIngredient('W', Material.WHEAT_SEEDS);
         recipe.setIngredient('I', Material.IRON_INGOT);
-        recipe.setIngredient('S', Material.WHEAT_SEEDS);
+        recipe.setIngredient('I', Material.IRON_INGOT);
         recipe.setIngredient('I', Material.IRON_INGOT);
         return recipe;
     }

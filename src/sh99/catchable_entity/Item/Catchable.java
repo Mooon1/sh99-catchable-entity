@@ -17,9 +17,9 @@ public interface Catchable extends Item, Craftable
 
     public Particle particle();
 
-    public default ItemStack create(int amount)
+    public default ItemStack create()
     {
-        ItemStack itemStack = new ItemStack(Material.SNOWBALL, amount);
+        ItemStack itemStack = new ItemStack(Material.SNOWBALL, 1);
 
         ItemMeta itemMeta = itemStack.getItemMeta();
 
@@ -44,11 +44,6 @@ public interface Catchable extends Item, Craftable
         itemStack.setItemMeta(itemMeta);
 
         return itemStack;
-    }
-
-    public default ItemStack create()
-    {
-        return this.create(1);
     }
 
     public static Catchable fromItem(ItemStack itemStack)

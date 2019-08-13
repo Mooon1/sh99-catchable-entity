@@ -6,3 +6,6 @@ main: sh99.catchable_entity.Main
 api-version: "1.14"
 description: "Catch entites while throwing an item on them."
 commands:
+  ball:
+    usage: "/ball"
+    description: "Ball access."

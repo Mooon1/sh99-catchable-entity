@@ -11,11 +11,11 @@
     <orderEntry type="module-library" exported="" scope="PROVIDED">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../Server/1.14.3/test/spigot-1.14.3.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../Server/1.14.4/spigot-1.14.4.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES>
-          <root url="jar://$MODULE_DIR$/../../Server/1.14.3/test/spigot-1.14.3.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../Server/1.14.4/spigot-1.14.4.jar!/" />
         </SOURCES>
       </library>
     </orderEntry>

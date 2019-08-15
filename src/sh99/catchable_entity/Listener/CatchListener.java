@@ -85,50 +85,49 @@ public class CatchListener implements Listener
 
         String identifier = snowball.getCustomName();
 
-        Catchable catchable = Catchables.valueOf(identifier).getCatchable();
-
-        if(null == catchable){
-            return;
-        }
-
-        Entity hitEntity = event.getHitEntity();
-
-        if(null == hitEntity){
-            return;
-        }
-
-        if(hitEntity instanceof Player){
-            return;
-        }
-
-        if(!(hitEntity instanceof Creature)){
-            return;
-        }
-
-        if((new Random().nextInt(100)) > catchable.rate()){
-            shooter.sendMessage(ChatColor.RED + "Failed to catch a wild " + ChatColor.GOLD + hitEntity.getName() + ChatColor.RED + " with a " + catchable.name() + ChatColor.RED + ".");
-            return;
-        }
-
-        String spawnEggName = hitEntity.getType().toString() +"_SPAWN_EGG";
-
-        Material material;
-
         try {
-            material = Material.valueOf(spawnEggName);
+            Catchable catchable = Catchables.valueOf(identifier).getCatchable();
+
+            Entity hitEntity = event.getHitEntity();
+
+            if(null == hitEntity){
+                return;
+            }
+
+            if(hitEntity instanceof Player){
+                return;
+            }
+
+            if(!(hitEntity instanceof Creature)){
+                return;
+            }
+
+            if((new Random().nextInt(100)) > catchable.rate()){
+                shooter.sendMessage(ChatColor.RED + "Failed to catch a wild " + ChatColor.GOLD + hitEntity.getName() + ChatColor.RED + " with a " + catchable.name() + ChatColor.RED + ".");
+                return;
+            }
+
+            String spawnEggName = hitEntity.getType().toString() +"_SPAWN_EGG";
+
+            Material material;
+
+            try {
+                material = Material.valueOf(spawnEggName);
+            }catch (IllegalArgumentException e){
+                return;
+            }
+
+            ItemStack itemStack = new ItemStack(material, 1);
+
+            hitEntity.getWorld().dropItem(hitEntity.getLocation(), itemStack);
+            ((Creature) hitEntity).setLastDamage(0);
+            hitEntity.getWorld().spawnParticle(catchable.particle(), hitEntity.getLocation(), 100);
+            event.getHitEntity().remove();
+            event.getHitEntity().setCustomNameVisible(true);
+            event.getHitEntity().setCustomName(hitEntity.getName());
+
+            shooter.sendMessage(ChatColor.DARK_PURPLE + "You catched a wild " + ChatColor.GOLD + hitEntity.getName() + ChatColor.DARK_PURPLE + " with a " + catchable.name() + ChatColor.DARK_PURPLE + ".");
         }catch (IllegalArgumentException e){
-            return;
         }
-
-        ItemStack itemStack = new ItemStack(material, 1);
-
-        hitEntity.getWorld().dropItem(hitEntity.getLocation(), itemStack);
-        ((Creature) hitEntity).setLastDamage(0);
-        hitEntity.getWorld().spawnParticle(catchable.particle(), hitEntity.getLocation(), 100);
-        event.getHitEntity().remove();
-        event.getHitEntity().setCustomNameVisible(true);
-        event.getHitEntity().setCustomName(hitEntity.getName());
-
-        shooter.sendMessage(ChatColor.DARK_PURPLE + "You catched a wild " + ChatColor.GOLD + hitEntity.getName() + ChatColor.DARK_PURPLE + " with a " + catchable.name() + ChatColor.DARK_PURPLE + ".");
     }
 }
